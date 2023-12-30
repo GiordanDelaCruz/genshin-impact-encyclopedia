@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import {dirname} from "path";
 import { fileURLToPath } from "url";
+import { type } from "os";
 
 const app = express();
 const port = 3000;
@@ -35,14 +36,13 @@ app.get("/", (req, res) => {
 // Handle Character Query
 app.post("/post-character", async (req, res) => {
     const character = req.body.character;
-    console.log("Character Query: " + character);
     try{
         const result = await axios.get(API_URL + "/characters/" + character);
         res.render("index", {
             name:  result.data.name,
             title: result.data.title, 
-            vision: result.data.vision, 
-            weapon: result.data.weapon, 
+            vision: result.data.vision.toLowerCase(), 
+            weapon: result.data.weapon.toLowerCase(), 
             gender: result.data.gender, 
             nation: result.data.nation, 
             affiliation: result.data.affiliation, 
@@ -50,7 +50,8 @@ app.post("/post-character", async (req, res) => {
             release: result.data.release, 
             constellation: result.data.constellation, 
             birthday: result.data.birthday, 
-            description: result.data.description
+            description: result.data.description, 
+            imageName: result.data.name.toLowerCase()
         });
     }catch(error) {
         console.log(error);
@@ -60,20 +61,24 @@ app.post("/post-character", async (req, res) => {
 // TESTING
 app.get("/test", async (req, res) => {
     try{
-        const result = await axios.get(API_URL + "/characters/ganyu");
+        // const result = await axios.get(API_URL + "/characters/ganyu");
+        // const image  = await axios.get(API_URL + "/characters/ganyu/card"); 
+        // console.log("Printing image data:\n" + image.data )
         res.render("index", {
-            name:  result.data.name,
-            title: result.data.title, 
-            vision: result.data.vision, 
-            weapon: result.data.weapon, 
-            gender: result.data.gender, 
-            nation: result.data.nation, 
-            affiliation: result.data.affiliation, 
-            rarity: result.data.rarity, 
-            release: result.data.release, 
-            constellation: result.data.constellation, 
-            birthday: result.data.birthday, 
-            description: result.data.description
+            mame: "ganyu"
+            // name:  result.data.name,
+            // title: result.data.title, 
+            // vision: result.data.vision, 
+            // weapon: result.data.weapon, 
+            // gender: result.data.gender, 
+            // nation: result.data.nation, 
+            // affiliation: result.data.affiliation, 
+            // rarity: result.data.rarity, 
+            // release: result.data.release, 
+            // constellation: result.data.constellation, 
+            // birthday: result.data.birthday, 
+            // description: result.data.description, 
+            // image: image
         });
     }catch(error) {
         console.log(error);

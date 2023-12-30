@@ -8,6 +8,7 @@
        <input type="submit" value="Search" formaction="/post-character">
    </form>   
 
+ 
    <% if( locals.name ){ %>
     <div class="container">
         <div class="row">
@@ -15,22 +16,25 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h1 class="text-primary"> <%= name %> </h1>
+                        <h1 class="character-header">
+                            <img class="vision-icon" src="https://genshin.jmp.blue/elements/<%= vision %>/icon/" alt=""> 
+                            <%= name %> 
+                        </h1>
                     </div>
-                    <div class="col-lg-3">
-                        <h1> <%= weapon %> </h1>
+                    <div class="col-lg-4"> 
+                        <!-- <img class="vision-icon" src="https://genshin.jmp.blue/elements/<%= vision %>/icon/" alt=""> -->
                     </div>
-                    <div class="col-lg-3">
-                        <h1> <%= vision %> </h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2> <%= title %> </h2>
+                    <div class="col-lg-2">
+                        <img class="weapon-icon" src="images/<%= weapon %>.webp" alt="">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
+                        <h2 class="title-header"> <%= title %> </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 mt-5">
                         <p> <%= description %> </p>
                     </div>
                 </div>
@@ -43,41 +47,45 @@
             <!-- Side bar -->
             <div class="col-lg-4">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1> <%= rarity %> </h1>
+                    <div class="col-lg-12 text-center">
+                        <% for(var i = 0; i < rarity ; i++){ %>
+                            <i class="fa-solid fa-star fa-2x"></i>
+                        <% } %>
+                       
                     </div>
                 </div>
                 <div class="row">
                     <!-- TODO: Insert Image -->
+                    <img class="character-image" src="https://genshin.jmp.blue/characters/<%= imageName %>/card/"  alt="">
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 text-center"> 
                         <p> <%= gender %> </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 text-center">
                         <p> <%= nation %> </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 text-center">
                         <p> <%= affiliation %> </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 text-center">
                         <p> <%= constellation %> </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <p> <%= birthday %> </p>
+                    <div class="col-lg-12 text-center">
+                        <p> Birthday: <%= birthday %> </p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <p> <%= release %> </p>
+                    <div class="col-lg-12 text-center">
+                        <p> Release Date: <%= release %> </p>
                     </div>
                 </div>
             </div>

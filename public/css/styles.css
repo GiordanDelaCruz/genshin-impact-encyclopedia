@@ -1,0 +1,28 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+p{
+
+}
+
+.character-header{
+    font-weight: 700;
+    height: 2rem;
+}
+
+.title-header{
+    height: 0.7rem;
+}
+
+.weapon-icon{
+    width: 4rem;
+}
+
+.vision-icon{
+    width: 4rem;
+}
+
+.character-image{
+    width: 25rem;
+}
