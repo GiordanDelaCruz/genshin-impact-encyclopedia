@@ -12,16 +12,19 @@ p{
 
 .character-header{
     font-weight: 700;
-    height: 2rem;
 }
 
 .title-header{
-    height: 0.7rem;
+   
 }
 
 .skill-talent-block{
    display: inline-block;
    margin: 0 0.5rem 0 0;
+}
+
+.character-icon{
+    width: 4rem;
 }
 
 .weapon-icon{

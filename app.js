@@ -49,7 +49,7 @@ app.post("/post-character", async (req, res) => {
             constellation: result.data.constellation, 
             birthday: result.data.birthday, 
             description: result.data.description, 
-            imageName: character.toLowerCase().replace(" ", "-"), 
+            imageName: character, 
             skillTalents: result.data.skillTalents, 
             passiveTalents: result.data.passiveTalents, 
             constellations: result.data.constellations
