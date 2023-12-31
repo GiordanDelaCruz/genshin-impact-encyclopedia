@@ -6,6 +6,10 @@ p{
  
 }
 
+.genshin-impact-logo{
+    height: 3.5rem;
+}
+
 .character-header{
     font-weight: 700;
     height: 2rem;
@@ -47,3 +51,4 @@ p{
 .custom-table{
     table-layout: fixed;
 }
+

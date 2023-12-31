@@ -1,0 +1,95 @@
+/* Accordion Colors */
+.accordion-pryo{
+    --bs-accordion-btn-bg: #EC4923;
+    --bs-accordion-active-bg: #EC4923;
+    --bs-accordion-color:white;
+}
+.accordion-hydro{
+    --bs-accordion-btn-bg: #4682B4;
+    --bs-accordion-active-bg: #4682B4;
+    --bs-accordion-color:white;
+}
+.accordion-anemo{
+    --bs-accordion-btn-bg: #359697;
+    --bs-accordion-active-bg: #359697;
+    --bs-accordion-color:white;
+}
+.accordion-electro{
+    --bs-accordion-btn-bg: #945dc4;
+    --bs-accordion-active-bg: #945dc4;
+    --bs-accordion-color:white;
+}
+.accordion-dendro{
+    --bs-accordion-btn-bg: #608a00;
+    --bs-accordion-active-bg: #608a00;
+    --bs-accordion-color:white;
+}
+.accordion-cryo{
+    --bs-accordion-btn-bg: #4682B4;
+    --bs-accordion-active-bg: #4682B4;
+    --bs-accordion-color:white;
+}
+.accordion-geo{
+    --bs-accordion-btn-bg: #debd6c;
+    --bs-accordion-active-bg: #debd6c;
+    --bs-accordion-color:white;
+}
+
+/* Background Colors */
+.bg-pyro{
+    background-color: #EC4923;
+}
+
+.bg-cryo{
+    background-color: #4682B4;
+}
+
+.bg-hydro{
+    background-color: #00BFFF;
+}
+
+.bg-anemo{
+    background-color: #359697;
+}
+
+.bg-electro{
+    background-color: #945dc4;
+}
+
+.bg-dendro{
+    background-color: #608a00;
+}
+
+.bg-geo{
+    background-color: #debd6c;
+}
+
+/* Text Colors */
+.text-pyro{
+    color: #EC4923;
+}
+
+.text-cryo{
+    color: #4682B4;
+}
+
+.text-hydro{
+    color: #00BFFF;
+}
+
+.text-anemo{
+    color: #359697;
+}
+
+.text-electro{
+    color: #945dc4;
+}
+
+.text-dendro{
+    color: #608a00;
+}
+
+.text-geo{
+    color: #debd6c;
+}
+

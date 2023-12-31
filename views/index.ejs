@@ -1,14 +1,45 @@
 <%- include("partials/header"); %>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><img class="genshin-impact-logo" src="images/paimon-logo.png" alt=""> GenshinPedia</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Skill Talents
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#normalAttack">Normal Attack</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#elementalSkill">Elemental Skill</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#elementalBurst">Elemental Burst</a>
+                    </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#passiveTalents">Passive Talents</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#constellations">Constellations</a>
+              </li>
+            </ul>
+            <form class="d-flex" method="post" role="search" >
+              <input class="form-control me-2" type="search" name="character" placeholder="Character Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit" value="Search" formaction="/post-character">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
 
-    <form method="post">
-        <!-- Search Input -->
-       <label for="character">Character: </label>
-       <input type="text" name="character">
-       <input type="submit" value="Search" formaction="/post-character">
-   </form>   
-
- 
    <% if( locals.name ){ %>
     <div class="container">
         <div class="row">
@@ -22,7 +53,7 @@
                         </h1>
                     </div>
                     <div class="col-lg-4"> 
-                        <!-- <img class="vision-icon" src="https://genshin.jmp.blue/elements/<%= vision %>/icon/" alt=""> -->
+                       <!-- nothing -->
                     </div>
                     <div class="col-lg-2">
                         <img class="weapon-icon" src="images/<%= weapon %>.webp" alt="">
@@ -43,40 +74,143 @@
                         <!-- TODO: Insert Skills and Constellaton Data -->
                         <!-- Skill Talents -->
                         <% for(var i = 0; i < skillTalents.length; i++){ %>
-                            <h4 class="pt-4 skill-talent-block">
                                 <% if( skillTalents[i].unlock === "Normal Attack"){ %>
-                                    <img class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-na" alt="">
-                                <% }else if( skillTalents[i].unlock === "Elemental Skill" ){ %>
-                                    <img class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-skill" alt="">
-                                <% }else if( skillTalents[i].unlock === "Elemental Burst" ){ %>
-                                    <img class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-burst" alt="">
-                                <% } %>
-                                <%= skillTalents[i].unlock %>:
-                            </h4>
-                            <h5 class="skill-talent-block">[<%= skillTalents[i].name %>]</h5>
-                            <p class="pt-3"> <%= skillTalents[i].description %></p>
-                            <% for(var j=0; j < skillTalents[i].upgrades.length; j++){ %>
-                                <table class="table custom-table table-hover">
-                                    <tbody>
-                                      <tr>
-                                        <td class=""><%= skillTalents[i].upgrades[j].name %></td>
-                                        <td class=""><%= skillTalents[i].upgrades[j].value %></td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            <% } %>
+                                <h4 class="pt-4 skill-talent-block">
+                                    <img id="normalAttack" class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-na" alt="">
+                                    <%= skillTalents[i].unlock %>:
+                                </h4>
+                                    <h5 class="skill-talent-block">[<%= skillTalents[i].name %>]</h5>
+                                    <p class="pt-3"> <%= skillTalents[i].description %></p>
+                                    <!-- Accordion 1 -->
+                                    <div class="accordion accordion-flush" id="">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Show Additional Details
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="">        
+                                                <div class="accordion-body">        
+                                                    <% if( skillTalents[i].upgrades ){ %>
+                                                        <% for(var j=0; j < skillTalents[i].upgrades.length; j++){ %>
+                                                            <table class="table custom-table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class=""><%= skillTalents[i].upgrades[j].name %></td>
+                                                                    <td class=""><%= skillTalents[i].upgrades[j].value %></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        <% } %>
+                                                    <% }else{ %>
+                                                        <table class="table custom-table table-hover">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="">Currently Not Available</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } %>
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>    
 
+                                <% }else if( skillTalents[i].unlock === "Elemental Skill" ){ %>
+                                    <h4 class="pt-4 skill-talent-block">
+                                        <img id="elementalSkill" class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-skill" alt="">
+                                        <%= skillTalents[i].unlock %>:
+                                    </h4>
+                                    <h5 class="skill-talent-block">[<%= skillTalents[i].name %>]</h5>
+                                    <p class="pt-3"> <%= skillTalents[i].description %></p>
+                                    <!-- Accordion 2 -->
+                                    <div class="accordion" id="">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                    Show Additional Details
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="">        
+                                                <div class="accordion-body">  
+                                                    <% if( skillTalents[i].upgrades ){ %>      
+                                                        <% for(var j=0; j < skillTalents[i].upgrades.length; j++){ %>
+                                                            <table class="table custom-table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class=""><%= skillTalents[i].upgrades[j].name %></td>
+                                                                    <td class=""><%= skillTalents[i].upgrades[j].value %></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        <% } %>
+                                                    <% }else{ %>
+                                                        <table class="table custom-table table-hover">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="">Currently Not Available</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                <% }else if( skillTalents[i].unlock === "Elemental Burst" ){ %>
+                                    <h4 class="pt-4 skill-talent-block">
+                                        <img id="elementalBurst" class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-burst" alt="">
+                                        <%= skillTalents[i].unlock %>:
+                                    </h4>
+                                    <h5 class="skill-talent-block">[<%= skillTalents[i].name %>]</h5>
+                                    <p class="pt-3"> <%= skillTalents[i].description %></p>
+                                    <!-- Accordion 3 -->
+                                    <div class="accordion" id="">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                                    Show Additional Details
+                                                </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="">        
+                                                <div class="accordion-body">       
+                                                    <% if( skillTalents[i].upgrades ){ %>       
+                                                        <% for(var j=0; j < skillTalents[i].upgrades.length; j++){ %>
+                                                            <table class="table custom-table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class=""><%= skillTalents[i].upgrades[j].name %></td>
+                                                                    <td class=""><%= skillTalents[i].upgrades[j].value %></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        <% } %>
+                                                    <% }else{ %>
+                                                        <table class="table custom-table table-hover">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="">Currently Not Available</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+
+                                <% } %>
                         <% } %>
                         
                         <!-- Passive Talents -->
-                        <h4 class="pt-4"> Passive Talents</h4>
+                        <h4 id="passiveTalents" class="pt-4"> Passive Talents</h4>
                         <% for(var i = 0; i < passiveTalents.length; i++){ %>
                             <table class="table custom-table table-hover">
                                 <tbody>
                                   <tr>
                                     <td class=""><img class="passive-talent-icon" src="https://genshin.jmp.blue/characters/<%= imageName %>/talent-passive-<%= i %>" alt=""> <%= passiveTalents[i].name %></td>
                                     <td class=""><%= passiveTalents[i].description %></td>
-                                    <!-- <td class=""><%= passiveTalents[i].unlock %></td> -->
                                   </tr>
                                 </tbody>
                             </table>
@@ -84,7 +218,7 @@
                         <% } %>
                         
                         <!-- Constellations -->
-                        <h4 class="pt-4"> Constellations</h4>
+                        <h4 id="constellations" class="pt-4"> Constellations</h4>
                         <% for(var i = 0; i < constellations.length; i++){ %>
                             <table class="table custom-table table-hover">
                                 <tbody>
@@ -150,22 +284,6 @@
         </div>
     </div>
     <% } %>
-
-    <!-- API Data -->
-    <!-- <% if( locals.name ){ %>
-        <h1 class="text-primary"> <%= name %> </h1>
-        <h2> <%= title %> </h2>
-        <h1> <%= vision %> </h1>
-        <h1> <%= weapon %> </h1>
-        <h3> <%= gender %> </h3>
-        <h2> <%= nation %> </h2>
-        <p> <%= affiliation %> </p>
-        <h2> <%= rarity %> </h2>
-        <p> <%= release %> </p>
-        <p> <%= constellation %> </p>
-        <p> <%= birthday %> </p>
-        <p> <%= description %> </p>
-    <% } %> -->
 
 </body>
 <%- include("partials/footer"); %>
