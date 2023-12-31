@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 
 // Handle Character Query
 app.post("/post-character", async (req, res) => {
-    const character = req.body.character;
+    const character = req.body.character.toLowerCase().replace(" ", "-");
     try{
         const result = await axios.get(API_URL + "/characters/" + character);
         res.render("index", {
@@ -49,7 +49,7 @@ app.post("/post-character", async (req, res) => {
             constellation: result.data.constellation, 
             birthday: result.data.birthday, 
             description: result.data.description, 
-            imageName: result.data.name.toLowerCase(), 
+            imageName: character.toLowerCase().replace(" ", "-"), 
             skillTalents: result.data.skillTalents, 
             passiveTalents: result.data.passiveTalents, 
             constellations: result.data.constellations
