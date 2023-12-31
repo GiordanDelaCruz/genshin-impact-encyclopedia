@@ -3,7 +3,7 @@ body{
 }
 
 p{
-
+ 
 }
 
 .character-header{
@@ -15,6 +15,11 @@ p{
     height: 0.7rem;
 }
 
+.skill-talent-block{
+   display: inline-block;
+   margin: 0 0.5rem 0 0;
+}
+
 .weapon-icon{
     width: 4rem;
 }
@@ -23,6 +28,22 @@ p{
     width: 4rem;
 }
 
+.talent-icon{
+    width: 4rem;
+}
+
+.passive-talent-icon{
+    width: 3rem;
+}
+
+.constellations-icon{
+    width: 3rem;
+}
+
 .character-image{
     width: 25rem;
+}
+
+.custom-table{
+    table-layout: fixed;
 }

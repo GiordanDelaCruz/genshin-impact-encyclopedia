@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <!-- Main Content -->
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <div class="row">
                     <div class="col-lg-6">
                         <h1 class="character-header">
@@ -41,11 +41,69 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- TODO: Insert Skills and Constellaton Data -->
+                        <!-- Skill Talents -->
+                        <% for(var i = 0; i < skillTalents.length; i++){ %>
+                            <h4 class="pt-4 skill-talent-block">
+                                <% if( skillTalents[i].unlock === "Normal Attack"){ %>
+                                    <img class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-na" alt="">
+                                <% }else if( skillTalents[i].unlock === "Elemental Skill" ){ %>
+                                    <img class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-skill" alt="">
+                                <% }else if( skillTalents[i].unlock === "Elemental Burst" ){ %>
+                                    <img class ="talent-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/talent-burst" alt="">
+                                <% } %>
+                                <%= skillTalents[i].unlock %>:
+                            </h4>
+                            <h5 class="skill-talent-block">[<%= skillTalents[i].name %>]</h5>
+                            <p class="pt-3"> <%= skillTalents[i].description %></p>
+                            <% for(var j=0; j < skillTalents[i].upgrades.length; j++){ %>
+                                <table class="table custom-table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td class=""><%= skillTalents[i].upgrades[j].name %></td>
+                                        <td class=""><%= skillTalents[i].upgrades[j].value %></td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            <% } %>
+
+                        <% } %>
+                        
+                        <!-- Passive Talents -->
+                        <h4 class="pt-4"> Passive Talents</h4>
+                        <% for(var i = 0; i < passiveTalents.length; i++){ %>
+                            <table class="table custom-table table-hover">
+                                <tbody>
+                                  <tr>
+                                    <td class=""><img class="passive-talent-icon" src="https://genshin.jmp.blue/characters/<%= imageName %>/talent-passive-<%= i %>" alt=""> <%= passiveTalents[i].name %></td>
+                                    <td class=""><%= passiveTalents[i].description %></td>
+                                    <!-- <td class=""><%= passiveTalents[i].unlock %></td> -->
+                                  </tr>
+                                </tbody>
+                            </table>
+                            
+                        <% } %>
+                        
+                        <!-- Constellations -->
+                        <h4 class="pt-4"> Constellations</h4>
+                        <% for(var i = 0; i < constellations.length; i++){ %>
+                            <table class="table custom-table table-hover">
+                                <tbody>
+                                  <tr>
+                                    <td class=""><img class="constellations-icon" src=" https://genshin.jmp.blue/characters/<%= imageName %>/constellation-<%= constellations[i].level %>" alt=""> <%= constellations[i].name %></td>
+                                    <td class=""><%= constellations[i].unlock %></td>
+                                    <td class=""><%= constellations[i].description %></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+
+                        <% } %>
+                      
+                        
                     </div>
                 </div>
             </div>
             <!-- Side bar -->
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <% for(var i = 0; i < rarity ; i++){ %>

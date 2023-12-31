@@ -51,7 +51,10 @@ app.post("/post-character", async (req, res) => {
             constellation: result.data.constellation, 
             birthday: result.data.birthday, 
             description: result.data.description, 
-            imageName: result.data.name.toLowerCase()
+            imageName: result.data.name.toLowerCase(), 
+            skillTalents: result.data.skillTalents, 
+            passiveTalents: result.data.passiveTalents, 
+            constellations: result.data.constellations
         });
     }catch(error) {
         console.log(error);
