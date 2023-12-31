@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Get Homepage
 app.get("/", (req, res) => {
     try{
-        res.render("index");
+        res.render("home");
     }catch(error) {
         console.log(error);
     }
