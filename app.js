@@ -1,11 +1,9 @@
 import express from "express";
 import axios from "axios";
-import ejs from "ejs";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import {dirname} from "path";
 import { fileURLToPath } from "url";
-import { type } from "os";
 
 const app = express();
 const port = process.env.PORT || 3000;
