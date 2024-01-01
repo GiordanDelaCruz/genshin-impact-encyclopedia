@@ -6,16 +6,21 @@ p{
  
 }
 
+/* Font Weights */
+.fw-600{
+    font-weight: 600;
+}
+
+.fw-700{
+    font-weight: 700;
+}
+
 .genshin-impact-logo{
     height: 3.5rem;
 }
 
 .character-header{
     font-weight: 700;
-}
-
-.title-header{
-   
 }
 
 .skill-talent-block{
@@ -45,6 +50,14 @@ p{
 
 .constellations-icon{
     width: 3rem;
+}
+
+.character-question-icon{
+    height: 4.5rem;
+}
+
+.compass-icon{
+    height: 4rem;
 }
 
 .character-image{
